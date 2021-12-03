@@ -25,7 +25,9 @@ def compute_gamma_str(elems):
 gamma_str = compute_gamma_str(raw)
 n = len(gamma_str)
 gamma = int(gamma_str, 2)
-epsilon = int(''.join(['1'] * n), 2) ^ gamma  # get binary negation of integer without sign issue (operator '~' would give some negative number)
+# get binary negation of integer without sign and additional bits in int repr issue (operator '~' would give some negative number, etc)
+# here we just stick to the correct number of bits to invert
+epsilon = int(''.join(['1'] * n), 2) ^ gamma  
 print("#1:", gamma * epsilon)
 
 #2
