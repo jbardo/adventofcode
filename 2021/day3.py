@@ -1,5 +1,13 @@
+"""
+#1: 3148794
+#2: 2795310
+"""
+
+with open("day3.txt") as f:
+    raw = list(f.read().splitlines())
+
 #1
-def find_gamma(elems):
+def compute_gamma_str(elems):
     """return format: binary string"""
     N = len(elems)
     n = len(elems[0])
@@ -7,26 +15,23 @@ def find_gamma(elems):
     for l in elems:
         for i, e in enumerate(l):
             gamma_sum[i] += int(e)
-    gamma = [0] * n
+    gamma_list = [0] * n
     for i, e in enumerate(gamma_sum):
         if e >= N/2:
-            gamma[i] = 1
-    return ''.join(list(map(str,gamma)))
+            gamma_list[i] = 1
+    return ''.join(list(map(str,gamma_list)))
 
-with open("day3.txt") as f:
-    raw = list(f.read().splitlines())
-    gamma = find_gamma(raw)
-
-n = len(gamma)
-gamma = int(gamma, 2)
-epsilon = int(''.join(['1'] * n), 2) ^ gamma
+gamma_str = compute_gamma_str(raw)
+n = len(gamma_str)
+gamma = int(gamma_str, 2)
+epsilon = int(''.join(['1'] * n), 2) ^ gamma  # get binary negation of integer without sign issue (operator '~' would give some negative number)
 print("#1:", gamma * epsilon)
 
 #2
 def compute_oxy(elems, pos):
     if len(elems)==1:
         return elems[0]
-    g = find_gamma(elems)
+    g = compute_gamma_str(elems)
     oxy = []
     for el in elems:
         if el[pos] == g[pos]:
@@ -36,7 +41,7 @@ def compute_oxy(elems, pos):
 def compute_co2(elems, pos):
     if len(elems)==1:
         return elems[0]
-    g = find_gamma(elems)
+    g = compute_gamma_str(elems)
     co2 = []
     for el in elems:
         if el[pos] != g[pos]:
