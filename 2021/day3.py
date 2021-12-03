@@ -2,6 +2,7 @@
 #1: 3148794
 #2: 2795310
 """
+from operator import eq, ne
 
 with open("day3.txt") as f:
     raw = list(f.read().splitlines())
@@ -17,7 +18,7 @@ def compute_gamma_str(elems):
             gamma_sum[i] += int(e)
     gamma_list = [0] * n
     for i, e in enumerate(gamma_sum):
-        if e >= N/2:
+        if e >= N/2:  # favorizes bit 1 over 0 when equal
             gamma_list[i] = 1
     return ''.join(list(map(str,gamma_list)))
 
@@ -28,26 +29,16 @@ epsilon = int(''.join(['1'] * n), 2) ^ gamma  # get binary negation of integer w
 print("#1:", gamma * epsilon)
 
 #2
-def compute_oxy(elems, pos):
+def compute_oxy(elems: list, pos: int, ope):
     if len(elems)==1:
         return elems[0]
     g = compute_gamma_str(elems)
     oxy = []
     for el in elems:
-        if el[pos] == g[pos]:
+        if ope(el[pos], g[pos]):
             oxy.append(el)
-    return compute_oxy(oxy, pos+1)
+    return compute_oxy(oxy, pos+1, ope)
 
-def compute_co2(elems, pos):
-    if len(elems)==1:
-        return elems[0]
-    g = compute_gamma_str(elems)
-    co2 = []
-    for el in elems:
-        if el[pos] != g[pos]:
-            co2.append(el)
-    return compute_co2(co2, pos+1)
-
-oxygen = int(''.join(compute_oxy(raw, 0)), 2)
-co2 = int(''.join(compute_co2(raw, 0)), 2)
+oxygen = int(''.join(compute_oxy(raw, 0, eq)), 2)
+co2 = int(''.join(compute_oxy(raw, 0, ne)), 2)
 print("#2:", oxygen * co2)
