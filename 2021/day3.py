@@ -27,13 +27,13 @@ n = len(gamma_str)
 gamma = int(gamma_str, 2)
 # get binary negation of integer without sign and additional bits in int repr issue (operator '~' would give some negative number, etc)
 # here we just stick to the correct number of bits to invert
-epsilon = int(''.join(['1'] * n), 2) ^ gamma  
+epsilon = int('1' * n, 2) ^ gamma  
 print("#1:", gamma * epsilon)
 
 #2
 def compute_oxy(elems: list, pos: int, ope):
     if len(elems)==1:
-        return elems[0]
+        return ''.join(elems[0])
     g = compute_gamma_str(elems)
     oxy = []
     for el in elems:
@@ -41,6 +41,6 @@ def compute_oxy(elems: list, pos: int, ope):
             oxy.append(el)
     return compute_oxy(oxy, pos+1, ope)
 
-oxygen = int(''.join(compute_oxy(raw, 0, eq)), 2)
-co2 = int(''.join(compute_oxy(raw, 0, ne)), 2)
+oxygen = int(compute_oxy(raw, 0, eq), 2)
+co2 = int(compute_oxy(raw, 0, ne), 2)
 print("#2:", oxygen * co2)
