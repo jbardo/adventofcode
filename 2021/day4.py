@@ -59,12 +59,21 @@ class Board:
     def compute_score(self):
         return sum(self.values[i][j] for j in range(5) for i in range(5) if not self.mask[i][j])
 
+    class color:
+        GREEN = '\033[1;32;48m'
+        RED = '\033[0;31;48m'
+        END = '\033[0;37;0m'
+
     def display(self):
         print(f"Board #{self.board_number}:")
         for i in range(5):
             for j in range(5):
                 val_str = str(self.values[i][j])
-                print(' ' * (len(val_str) == 1) + val_str + ('*' if (self.mask[i][j]) else ' ') + ' ', end='')
+                # print(' ' * (len(val_str) == 1) + val_str + ('*' if (self.mask[i][j]) else ' ') + ' ', end='')
+                if self.mask[i][j]:
+                    print(self.color.GREEN + ' ' * (len(val_str) == 1) + val_str + self.color.END + ' ', end='')
+                else:
+                    print(self.color.RED + ' ' * (len(val_str) == 1) + val_str + self.color.END + ' ', end='')
             print('\n', end='')
 
 
