@@ -6,7 +6,8 @@
 with open("day2.txt") as f:
     raw = list(f.readlines())
 
-#1
+
+# 1
 def compute_hv(lines):
     h, v = 0, 0
     for line in lines:
@@ -21,10 +22,13 @@ def compute_hv(lines):
         else:
             raise RuntimeError(line, instruction, X)
     return h, v
-h, v = compute_hv(raw)
-print("#1:", h*v)  # 
 
-#2
+
+h, v = compute_hv(raw)
+print("#1:", h * v)
+
+
+# 2
 def compute_hv_aim(lines):
     h, v, aim = 0, 0, 0
     for line in lines:
@@ -32,7 +36,7 @@ def compute_hv_aim(lines):
         X = int(X)
         if instruction == 'forward':
             h += X
-            v += aim*X
+            v += aim * X
         elif instruction == 'up':
             aim -= X
         elif instruction == 'down':
@@ -40,5 +44,7 @@ def compute_hv_aim(lines):
         else:
             raise RuntimeError(instruction, X)
     return h, v, aim
+
+
 h, v, _ = compute_hv_aim(raw)
-print("#2:", h*v)
+print("#2:", h * v)
