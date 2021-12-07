@@ -1,7 +1,3 @@
-"""
-#1: 3148794
-#2: 2795310
-"""
 from operator import eq, ne
 
 with open("data/03.txt") as f:
@@ -30,7 +26,8 @@ gamma = int(gamma_str, 2)
 # get binary negation of integer without sign and additional bits in int repr issue (operator '~' would give some negative number, etc)
 # here we just stick to the correct number of bits to invert
 epsilon = int('1' * n, 2) ^ gamma
-print("#1:", gamma * epsilon)
+res1 = gamma * epsilon
+print("#1:", res1)
 
 
 # 2
@@ -47,4 +44,10 @@ def compute_oxy(elems: list, pos: int, ope):
 
 oxygen = int(compute_oxy(raw, 0, eq), 2)
 co2 = int(compute_oxy(raw, 0, ne), 2)
-print("#2:", oxygen * co2)
+res2 = oxygen * co2
+print("#2:", res2)
+
+
+def test_03():
+    assert res1 == 3148794
+    assert res2 == 2795310

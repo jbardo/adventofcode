@@ -1,8 +1,3 @@
-"""
-#1: 2036120
-#2: 2015547716
-"""
-
 with open("data/02.txt") as f:
     raw = list(f.readlines())
 
@@ -25,7 +20,8 @@ def compute_hv(lines):
 
 
 h, v = compute_hv(raw)
-print("#1:", h * v)
+res1 = h * v
+print("#1:", res1)
 
 
 # 2
@@ -47,4 +43,10 @@ def compute_hv_aim(lines):
 
 
 h, v, _ = compute_hv_aim(raw)
-print("#2:", h * v)
+res2 = h * v
+print("#2:", res2)
+
+
+def test_02():
+    assert res1 == 2036120
+    assert res2 == 2015547716

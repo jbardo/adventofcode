@@ -1,7 +1,3 @@
-"""
-#1: 352151
-#2: 1601616884019
-"""
 from time import perf_counter
 
 with open("data/06.txt") as f:
@@ -42,4 +38,10 @@ res1bis = sum(batch_grow(raw, 80))
 t3 = perf_counter()
 print("#1:", res1, f"naive time elapsed: {t2 - t1:.9f} s")
 print("#1:", res1bis, f"batch time elapsed: {t3 - t2:.9f} s")
-print("#2:", sum(batch_grow(raw, 256)))
+res2 = sum(batch_grow(raw, 256))
+print("#2:", res2)
+
+
+def test_06():
+    assert res1 == 352151
+    assert res2 == 1601616884019

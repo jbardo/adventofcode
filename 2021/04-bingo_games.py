@@ -1,7 +1,3 @@
-"""
-#1: 65325
-#2: 4624
-"""
 from collections import deque
 from dataclasses import dataclass
 
@@ -102,15 +98,16 @@ for i, n in enumerate(numbers):
     if win:
         break
 
-if win:
-    print(f"Board {winning_board.board_number} won after {last_n_index} rounds, latest number was {last_n}")
-    print(" => winning board:")
-    winning_board.display()
-    print(" => winning line/col:")
-    print(winning_line)
-    print("#1:", winning_board.compute_score() * last_n)
-else:
-    print("no win???")
+if not win:
+    raise RuntimeError("No win???")
+
+print(f"Board {winning_board.board_number} won after {last_n_index} rounds, latest number was {last_n}")
+print(" => winning board:")
+winning_board.display()
+print(" => winning line/col:")
+print(winning_line)
+res1 = winning_board.compute_score() * last_n
+print("#1:", res1)
 
 # 2
 # Reset boards / lines
@@ -148,13 +145,18 @@ for i, n in enumerate(numbers):
     if stop:
         break
 
+if not stop:
+    raise RuntimeError("No win???")
 
-if stop:
-    print(f"Last Board {winning_board.board_number} won after {last_n_index} rounds, latest number was {last_n}")
-    print(" => last winning board:")
-    winning_board.display()
-    print(" => last winning line/col:")
-    print(winning_line)
-    print("#2:", winning_board.compute_score() * last_n)
-else:
-    print("no win???")
+print(f"Last Board {winning_board.board_number} won after {last_n_index} rounds, latest number was {last_n}")
+print(" => last winning board:")
+winning_board.display()
+print(" => last winning line/col:")
+print(winning_line)
+res2 = winning_board.compute_score() * last_n
+print("#2:", res2)
+
+
+def test_04():
+    assert res1 == 65325
+    assert res2 == 4624

@@ -1,7 +1,3 @@
-"""
-#1: 7297
-#2: 21038
-"""
 with open("data/05.txt") as f:
     raw = f.readlines()
 
@@ -89,12 +85,17 @@ def count_higher(grid, threshold):
 xmax_hv, ymax_hv = find_maxes(lines, True)
 grid_hv = [[0] * (ymax_hv + 1) for _ in range(xmax_hv + 1)]
 grid_hv = add_lines_hv(grid_hv, lines)
-n1 = count_higher(grid_hv, 2)
-print("#1:", n1)
+res1 = count_higher(grid_hv, 2)
+print("#1:", res1)
 
 xmax_hvd, ymax_hvd = find_maxes(lines, False)
 grid_hvd = [[0] * (ymax_hvd + 1) for _ in range(xmax_hvd + 1)]
 grid_hvd = add_lines_hv(grid_hvd, lines)
 grid_hvd = add_lines_d(grid_hvd, lines)
-n2 = count_higher(grid_hvd, 2)
-print("#2:", n2)
+res2 = count_higher(grid_hvd, 2)
+print("#2:", res2)
+
+
+def test_05():
+    assert res1 == 7297
+    assert res2 == 21038
