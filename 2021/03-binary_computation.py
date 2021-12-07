@@ -4,7 +4,7 @@
 """
 from operator import eq, ne
 
-with open("day3.txt") as f:
+with open("data/03.txt") as f:
     raw = list(f.read().splitlines())
 
 

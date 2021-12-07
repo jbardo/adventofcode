@@ -5,7 +5,7 @@
 from collections import deque
 from dataclasses import dataclass
 
-with open("day4.txt") as f:
+with open("data/04.txt") as f:
     raw = deque(f.readlines())
 
 numbers = list(map(int, raw.popleft().split(",")))

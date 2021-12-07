@@ -2,7 +2,7 @@
 #1: 7297
 #2: 21038
 """
-with open("day5.txt") as f:
+with open("data/05.txt") as f:
     raw = f.readlines()
 
 lines = [line.rstrip().split(" -> ")for line in raw]

@@ -4,7 +4,7 @@
 """
 from time import perf_counter
 
-with open("day6.txt") as f:
+with open("data/06.txt") as f:
     raw = list(map(int, f.read().rstrip("\n").split(",")))
 
 print("Init len:", len(raw))

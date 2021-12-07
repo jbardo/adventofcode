@@ -2,7 +2,7 @@
 #1: 325528
 #2: 85015836
 """
-with open("day7.txt") as f:
+with open("data/07.txt") as f:
     raw = list(map(int, f.read().rstrip("\n").split(",")))
 
 s = sorted(raw)

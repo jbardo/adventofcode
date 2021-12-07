@@ -17,7 +17,7 @@ def count_increases(measurements):
     return count
 
 
-with open('day1.txt') as f:
+with open("data/01.txt") as f:
     raw = list(map(int, f.read().splitlines()))
 
 # 1
