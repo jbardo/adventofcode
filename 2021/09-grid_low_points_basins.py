@@ -49,6 +49,8 @@ def expand_basin(grid, basin, i, j):
     for ii, jj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
         if i + ii < 0 or i + ii >= len(grid) or j + jj < 0 or j + jj >= len(grid[0]):
             continue
+        if (i + ii, j + jj) in basin:
+            continue
         if grid[i + ii][j + jj] <= grid[i][j] or grid[i + ii][j + jj] == 9:
             continue
         basin.append((i + ii, j + jj))
@@ -73,7 +75,7 @@ for pt in lpts:
     basins[-1] = expand_basin(grid, basins[-1], pt[0], pt[1])
 display_grid_basins(grid, lpts, basins)
 
-basins_sizes = [len(set(basin)) for basin in basins]
+basins_sizes = [len(basin) for basin in basins]
 basins_sizes = sorted(basins_sizes, reverse=True)
 res2 = basins_sizes[0] * basins_sizes[1] * basins_sizes[2]
 print("#2:", res2)
