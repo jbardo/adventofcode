@@ -35,7 +35,11 @@ class color:
 def display_grid_low_points(grid, lpts):
     for i, line in enumerate(grid):
         for j, val in enumerate(line):
-            print(color.GREEN * ((i, j) in lpts) + str(val) + color.END, end='')
+            if (i, j) in lpts:
+                print(color.GREEN, end='')
+            else:
+                print(color.BLACK, end='')
+            print(str(val) + color.END, end='')
         print()
 
 
@@ -65,7 +69,7 @@ def display_grid_basins(grid, lpts, basins):
                 if (i, j) in b:
                     print(color.BLUE, end='')
                     break
-            print(color.GREEN * ((i, j) in lpts) + str(val) + color.END, end='')
+            print(color.GREEN * ((i, j) in lpts) + color.RED * (val == 9) + str(val) + color.END, end='')
         print()
 
 
