@@ -76,7 +76,6 @@ display_grid_basins(grid, lpts, basins)
 basins_sizes = [len(set(basin)) for basin in basins]
 basins_sizes = sorted(basins_sizes, reverse=True)
 res2 = basins_sizes[0] * basins_sizes[1] * basins_sizes[2]
-print(basins[0])
 print("#2:", res2)
 
 
