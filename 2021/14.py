@@ -31,12 +31,12 @@ res1 = counts_difference(formula1)
 print("#1:", res1)
 
 
-formula2 = formula1
-for n in range(30):
-    print(n, end="\r")
-    formula2 = step(formula2, rules)
-res2 = counts_difference(formula2)
-print("#2:", res2)
+# formula2 = formula1
+# for n in range(30):
+#     print(n, end="\r")
+#     formula2 = step(formula2, rules)
+# res2 = counts_difference(formula2)
+# print("#2:", res2)
 
 
 def test_14():

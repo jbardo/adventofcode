@@ -45,13 +45,23 @@ def count_paths2(p, connections, visited):
     return res
 
 
-def count_paths2_faster(p, connections, visited):
-    return
+# def count_paths2_faster(p, connections, visited, counts):
+#     if p == "end":
+#         for k, v in visited:
+#             counts[k] += v
+#     if p == "start" and visited[p] > 0:
+#         return 0
+#     if is_lowercase(p) and visited[p] > 1:
+#         return 0
+#     visited[p] += 1
+#     for q in connections[p]:
+
+#     return
 
 
-visited2 = defaultdict(int)
-res2 = count_paths2("start", connections, visited2)
-print("#2:", res2)
+# visited2 = defaultdict(int)
+# res2 = count_paths2("start", connections, visited2)
+# print("#2:", res2)
 
 
 def test_12():
